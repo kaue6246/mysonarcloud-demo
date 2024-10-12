@@ -3,16 +3,14 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      dotnet: 8.0 # Update to .NET SDK version 8.0.402
+      dotnet: 8.0 # Use .NET SDK version 8.0.402
     commands:
       - echo Installing .NET Core SDK...
       - dotnet --version # Confirm installed .NET SDK version
       - echo Clearing NuGet cache...
       - dotnet nuget locals all --clear # Clear the NuGet cache
-      - echo Adding NuGet source...
-      - dotnet nuget add source https://api.nuget.org/v3/index.json # Add NuGet source
       - echo Restoring dependencies...
-      - dotnet restore aqa.csproj # Restore dependencies from the root directory
+      - dotnet restore aqa.csproj # Restore dependencies for the project in root directory
   pre_build:
     commands:
       - echo Starting pre-build phase...
