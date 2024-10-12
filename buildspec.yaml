@@ -3,27 +3,19 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      dotnet: 8.0 # Use .NET SDK version 8.0.402
+      dotnet: 8.0 # Install .NET SDK version 8.0
     commands:
-      - echo Installing .NET Core SDK...
-      - dotnet --version # Confirm installed .NET SDK version
-      - echo Clearing NuGet cache...
-      - dotnet nuget locals all --clear # Clear the NuGet cache
-      - echo Restoring dependencies...
-      - dotnet restore aqa.csproj # Restore dependencies for the project in root directory
-  pre_build:
-    commands:
-      - echo Starting pre-build phase...
-      - dotnet restore # Restore the .NET packages for the solution
+      - echo Installing .NET SDK...
+      - dotnet restore aqa.csproj # Restore the project's dependencies
   build:
     commands:
       - echo Building the project...
-      - dotnet build --configuration Release # Build the project in Release mode
+      - dotnet build aqa.csproj --configuration Release # Build the project explicitly
   post_build:
     commands:
       - echo Running tests...
-      - dotnet test --no-build --verbosity normal # Run unit tests
+      - dotnet test aqa.csproj --no-build --verbosity normal # Run the tests for the specific project
 artifacts:
   files:
-    - '**/bin/Release/net8.0/publish/**'
+    - '**/bin/Release/net8.0/publish/**' # The output folder for the published files
   discard-paths: yes
