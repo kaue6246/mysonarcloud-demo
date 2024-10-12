@@ -3,26 +3,29 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      dotnet: 6.0
+      dotnet: 8.0 # Update to .NET SDK version 8.0.402
     commands:
-      - echo Installing .NET Core
-      - dotnet --version # Check the installed version of .NET Core
+      - echo Installing .NET Core SDK...
+      - dotnet --version # Confirm installed .NET SDK version
+      - echo Clearing NuGet cache...
+      - dotnet nuget locals all --clear # Clear the NuGet cache
+      - echo Adding NuGet source...
+      - dotnet nuget add source https://api.nuget.org/v3/index.json # Add NuGet source
       - echo Restoring dependencies...
-      - dotnet restore aqa.csproj # Restore dependencies for the project
+      - dotnet restore aqa.csproj # Restore dependencies from the root directory
   pre_build:
     commands:
       - echo Starting pre-build phase...
-      - echo Restoring NuGet packages...
       - dotnet restore # Restore the .NET packages for the solution
   build:
     commands:
       - echo Building the project...
-      - dotnet build --configuration Release # Build the solution in Release mode
+      - dotnet build --configuration Release # Build the project in Release mode
   post_build:
     commands:
       - echo Running tests...
       - dotnet test --no-build --verbosity normal # Run unit tests
 artifacts:
   files:
-    - '**/bin/Release/net6.0/publish/**'
+    - '**/bin/Release/net8.0/publish/**'
   discard-paths: yes
