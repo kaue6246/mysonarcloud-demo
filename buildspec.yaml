@@ -17,4 +17,4 @@ phases:
       - dotnet test aqa.csproj --no-build --verbosity normal # Run the tests for the specific project
 artifacts:
   files:
-    - /var/www/csproj/aqa.csproj
+    - page/index.cshtml
