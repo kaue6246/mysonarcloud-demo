@@ -11,10 +11,11 @@ phases:
     commands:
       - echo Building the project...
       - dotnet build aqa.csproj --configuration Release # Build the project explicitly
+      - cp page/index.cshtml /var/www/html/index.cshtml # Copy the index.cshtml to /var/www/html/
   post_build:
     commands:
       - echo Running tests...
       - dotnet test aqa.csproj --no-build --verbosity normal # Run the tests for the specific project
 artifacts:
   files:
-    - page/index.cshtml
+    - /var/www/html/index.cshtml # Specify the path of the copied file for the artifact
