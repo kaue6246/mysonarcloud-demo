@@ -15,7 +15,6 @@ phases:
     commands:
       - echo Running tests...
       - dotnet test aqa.csproj --no-build --verbosity normal # Run the tests for the specific project
-      - cp index.cshtml /var/www/html/ # Copy the index.cshtml to /var/www/html/
 artifacts:
   files:
-    - /var/www/html/index.cshtml # Specify the path of the copied file for the artifact
+    - '/bin/Release/net8.0/publish/'
