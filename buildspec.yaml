@@ -3,19 +3,19 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      dotnet: 8.0 # Install .NET SDK version 8.0
+      dotnet: 8.0
     commands:
       - echo "Restoring .NET project dependencies..."
-      - dotnet restore aqa.csproj # Restore project dependencies
+      - dotnet restore aqa.csproj
   build:
     commands:
       - echo "Publishing the project..."
-      - dotnet publish aqa.csproj --configuration Release --output ./publish # Publish the project to ./publish
+      - dotnet publish aqa.csproj --configuration Release
   post_build:
     commands:
       - echo "Running tests..."
-      - dotnet test --no-build --verbosity normal # Run tests (optional)
+      - dotnet test --no-build --verbosity normal
 artifacts:
   files:
-    - 'publish/' # Collect all files from the publish directory
+    - 'bin/Release/net8.0/publish/**' # Use the default output directory for published files
   discard-paths: yes
