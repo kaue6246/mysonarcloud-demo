@@ -17,5 +17,4 @@ phases:
       - dotnet test aqa.csproj --no-build --verbosity normal # Run the tests for the specific project
 artifacts:
   files:
-    - 'publish/**' # Collect all files from the 'publish' folder
-  base-directory: publish # Specify the base directory where artifacts are located
+    - /var/www/csproj/aqa.csproj
