@@ -25,7 +25,7 @@ phases:
       - echo "Publishing the project..."
       - dotnet publish aqa.csproj --configuration Release
       - echo "Logging in to SonarCloud....."
-      - ./sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -X --define sonar.organization=kaue6246 --define sonar.projectKey=kaue6246_sonarcloud-demo --define sonar.host.url=https://sonarcloud.io --define sonar.login=816583e13428d7829eef68304de116fc5cf76f75
+      - ./sonar-scanner-5.0.1.3006-linux/bin/sonar-scanner -X --define sonar.organization=kaue6246 --define sonar.projectKey=kaue6246_sonarcloud-demo --define sonar.host.url=https://sonarcloud.io --define sonar.login=80dddb0d1aba5b57d6fa264df22cce3b423e9af4
 
   post_build:
     commands:
